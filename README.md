@@ -1,2 +1,13 @@
-# cryptowallet
-РџСЂРѕСЃС‚РѕРµ API РЅР° ASP.NET Core РґР»СЏ СЌРјСѓР»СЏС†РёРё РєР°СЃС‚РѕРґРёР°Р»СЊРЅРѕРіРѕ РєСЂРёРїС‚РѕРІР°Р»СЋС‚РЅРѕРіРѕ РєРѕС€РµР»СЊРєР°
+CryptoWallet API
+
+Простое API на ASP.NET Core для эмуляции кастодиального криптовалютного кошелька.
+
+Запуск без Docker :
+
+git clone https://github.com/milkweed123/cryptowallet.git
+
+cd cryptowallet
+
+Поменять в appsettings.json путь к бд, применить миграции с помощью dotnet ef database update
+
+dotnet run --project CryptoWallet.Api
