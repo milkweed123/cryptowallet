@@ -131,7 +131,7 @@ public class UsersControllerTests
             .ReturnsAsync(expectedDto);
 
         // Act
-        var result = await _controller.Withdraw(userId, new WithdrawRequest { Amount = withdrawAmount });
+        var result = await _controller.Withdraw(userId, new WithdrawDto { Amount = withdrawAmount });
 
         // Assert
         var ok = Assert.IsType<OkObjectResult>(result);

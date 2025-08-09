@@ -2,7 +2,7 @@
 
 namespace CryptoWallet.Api.Data.DTOs;
 
-public record WithdrawRequest
+public record WithdrawDto
 {
     [Required]
     [Range(0.01, double.MaxValue)]

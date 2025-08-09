@@ -83,7 +83,7 @@ public class UsersController : ControllerBase
     [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Withdraw(Guid userId, [FromBody] WithdrawRequest dto)
+    public async Task<IActionResult> Withdraw(Guid userId, [FromBody] WithdrawDto dto)
     {
         var result = await _userService.WithdrawAsync(userId, dto.Amount);
         return Ok(result);
