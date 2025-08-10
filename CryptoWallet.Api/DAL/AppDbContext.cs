@@ -15,6 +15,7 @@ public class AppDbContext : DbContext
         modelBuilder.ApplyConfiguration(new UserConfiguration());
     }
 
+      
     public DbSet<User> Users => Set<User>();
 
 }
