@@ -11,7 +11,7 @@ public record CreateUserDto
 
 public record ReadUserDto
 {
-    public Guid Guid { get; init; }
+    public Guid UserId { get; init; }
 
     public string Email { get; init; } = string.Empty;
 }

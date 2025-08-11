@@ -19,7 +19,7 @@ public class UserServiceTests
     {
         _mapper
             .Setup(m => m.Map<ReadUserDto>(It.IsAny<User>()))
-            .Returns((User u) => new ReadUserDto { Guid = u.UserId, Email = u.Email });
+            .Returns((User u) => new ReadUserDto { UserId = u.UserId, Email = u.Email });
 
         _service = new UserService(_repo.Object, _mapper.Object);
     }
@@ -92,7 +92,7 @@ public class UserServiceTests
 
         var dto = await _service.DepositAsync(id, 90.0);
 
-        Assert.Equal(id, dto.Guid);
+        Assert.Equal(id, dto.UserId);
         Assert.Equal("u@ex.com", dto.Email);
         Assert.Equal(100.0, user.Balance, 5);
 
@@ -120,7 +120,7 @@ public class UserServiceTests
 
         var dto = await _service.WithdrawAsync(id, 50.0);
 
-        Assert.Equal(id, dto.Guid);
+        Assert.Equal(id, dto.UserId);
         Assert.Equal(100.0, user.Balance, 5);
 
         _repo.Verify(r => r.UpdateUserAsync(It.Is<User>(u => u.UserId == id && Math.Abs(u.Balance - 100.0) < 1e-6)), Times.Once);

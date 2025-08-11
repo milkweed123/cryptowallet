@@ -97,7 +97,7 @@ public class UsersControllerTests
         var depositAmount = 100.0;
         var expectedDto = new ReadUserDto
         {
-            Guid = userId,
+            UserId = userId,
             Email = "user@example.com"
         };
 
@@ -111,7 +111,7 @@ public class UsersControllerTests
         // Assert
         var ok = Assert.IsType<OkObjectResult>(result);
         var returnedDto = Assert.IsType<ReadUserDto>(ok.Value);
-        Assert.Equal(expectedDto.Guid, returnedDto.Guid);
+        Assert.Equal(expectedDto.UserId, returnedDto.UserId);
     }
 
     [Fact]
@@ -122,7 +122,7 @@ public class UsersControllerTests
         var withdrawAmount = 50.0;
         var expectedDto = new ReadUserDto
         {
-            Guid = userId,
+            UserId = userId,
             Email = "user@example.com"
         };
 
@@ -136,6 +136,6 @@ public class UsersControllerTests
         // Assert
         var ok = Assert.IsType<OkObjectResult>(result);
         var returnedDto = Assert.IsType<ReadUserDto>(ok.Value);
-        Assert.Equal(expectedDto.Guid, returnedDto.Guid);
+        Assert.Equal(expectedDto.UserId, returnedDto.UserId);
     }
 }
