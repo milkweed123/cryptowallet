@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: ./
+      dockerfile: CryptoWallet.Api/Dockerfile
+    container_name: cryptowallet-api
+    environment:
+      ConnectionStrings__PostgresConnectionString: "Host=db;Database=${POSTGRES_DB:-cryptowallet};Username=${POSTGRES_USER:-postgres};Password=${POSTGRES_PASSWORD:-postgres};SSL Mode=Disable"
+      ASPNETCORE_URLS: "http://0.0.0.0:8080"
+      ASPNETCORE_ENVIRONMENT: "Development"
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+  db:
+    image: postgres:16
+    container_name: cryptowallet-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-cryptowallet}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  dbdata:
